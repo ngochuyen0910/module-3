@@ -16,9 +16,16 @@ group by ma_nhan_vien)
 select ma_nhan_vien, ho_ten from nhan_vien where `status` = 1;
 
 -- 18.Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
-select kh.ma_khach_hang, kh.ho_ten from khach_hang kh
+SET SQL_SAFE_UPDATES = 0;
+update khach_hang set `status`= 1
+where khach_hang.ma_khach_hang in (
+select * from (
+select kh.ma_khach_hang from khach_hang kh
 join hop_dong hd on kh.ma_khach_hang = hd.ma_khach_hang
-where year(hd.ngay_lam_hop_dong) < 2021;
+where year(hd.ngay_lam_hop_dong) < 2021)
+temp);
+-- những khách hàng đã được xoá
+select ma_khach_hang, ho_ten from khach_hang where `status` = 1;
 
 -- 17.Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, chỉ cập nhật những khách hàng đã từng đặt phòng với
 -- Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.

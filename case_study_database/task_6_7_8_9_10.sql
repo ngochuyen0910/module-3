@@ -8,8 +8,9 @@ join loai_dich_vu on loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
 join hop_dong on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
 where hop_dong.ma_dich_vu not in( 
 select hop_dong.ma_dich_vu
-where year(hop_dong.ngay_lam_hop_dong) = 2021 and (month(hop_dong.ngay_lam_hop_dong)between 1 and 3)
-group by hop_dong.ma_dich_vu);
+from hop_dong
+where year(hop_dong.ngay_lam_hop_dong) = 2021 and (month(hop_dong.ngay_lam_hop_dong)between 1 and 3))
+group by ma_dich_vu;
 
 -- 7.Hiển thị thông tin ma_dich_vu, ten_dich_vu, dien_tich, so_nguoi_toi_da, chi_phi_thue, ten_loai_dich_vu của tất cả các loại dịch vụ 
 -- đã từng được khách hàng đặt phòng trong năm 2020 nhưng chưa từng được khách hàng đặt phòng trong năm 2021.
@@ -17,9 +18,7 @@ select dich_vu.ma_dich_vu, dich_vu.ten_dich_vu, dich_vu.dien_tich, dich_vu.so_ng
 from dich_vu
 join loai_dich_vu on loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
 join hop_dong on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
-where year(hop_dong.ngay_lam_hop_dong) = 2020 and year(hop_dong.ngay_lam_hop_dong) not in( 
-select year(hop_dong.ngay_lam_hop_dong)
-where year(hop_dong.ngay_lam_hop_dong) = 2021);
+where year(hop_dong.ngay_lam_hop_dong) = 2020 and year(hop_dong.ngay_lam_hop_dong) <> 2021;
 
 -- 8.Hiển thị thông tin ho_ten khách hàng có trong hệ thống, với yêu cầu ho_ten không trùng nhau.
 -- Cách 1:
