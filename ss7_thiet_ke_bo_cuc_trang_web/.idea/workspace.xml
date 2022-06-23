@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d177fa70-c67d-42f0-bf6f-a409053b2754" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../ss6_css/bai_tap/dinh_dang_van_ban_voi_css/dinh_dang_van_ban_voi_css.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss6_css/bai_tap/dinh_dang_van_ban_voi_css/my_css.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss6_css/bai_tap/nhung_css_vao_html/nhung_css_vao_html.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss6_css/bai_tap/tao_trang_doc_truyen/tao_trang_doc_truyen.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss6_css/bai_tap/tao_trang_doc_truyen/truyen.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss6_css/bai_tap/tao_trang_doc_truyen/truyen_co_tich/nguoi_tho_moc_va_nguoi_hoa_si.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss6_css/bai_tap/tao_trang_doc_truyen/truyen_co_tich/tam_cam.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss6_css/thuc_hanh/su_dung_css.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai_tap/tao_giao_dien_facbook/facebook.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai_tap/tao_giao_dien_facbook/tao_giao_dien_fb.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai_tap/tao_layout_voi_rwd/rwd.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai_tap/tao_layout_voi_rwd/tao_layout_voi_rwd.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai_tap/tao_layout_voi_the/layout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bai_tap/tao_layout_voi_the/tao_layout_voi_the.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/su_dung_box_model/su_dung_box_model.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/tao_menu_doc/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/tao_menu_doc/tao_menu_doc.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/tao_menu_ngang/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thuc_hanh/tao_menu_ngang/tao_menu_ngang.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../abc/jkl.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study_database/task_16_17_18_19_20.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../case_study_database/task_16_17_18_19_20.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study_database/task_2_3_4_5.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../case_study_database/task_2_3_4_5.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study_database/task_6_7_8_9_10.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../case_study_database/task_6_7_8_9_10.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss3_thao_tac_csdl/bai_tap/task_6_7_8_9_10.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../ss3_thao_tac_csdl/bai_tap/task_6_7_8_9_10.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss4_cac_ham_sql/ss2_c03.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../ss4_cac_ham_sql/ss2_c03.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2AumGafwmkapYbKlsdqOreGBZ0m" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d177fa70-c67d-42f0-bf6f-a409053b2754" name="Default Changelist" comment="" />
+      <created>1655867749016</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655867749016</updated>
+      <workItem from="1655867750172" duration="27000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="579" y="172" key="FileChooserDialogImpl" timestamp="1655867772529">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="579" y="172" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1655867772529" />
+  </component>
+</project>

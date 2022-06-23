@@ -1,0 +1,34 @@
+#menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #CDCDCD;
+    width: 100%;
+    height: 100px;
+}
+a {
+    text-decoration: none;
+}
+
+footer {
+    padding: 5px;
+    background-color: #CDCDCD;
+}
+
+article {
+    margin: 10px;
+    padding: 10px;
+}
+
+#menu ul, #menu li {
+    padding: 0;
+    margin: 0;
+}
+
+#menu li {
+    position: relative;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
