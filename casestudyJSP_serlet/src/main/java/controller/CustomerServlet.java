@@ -1,6 +1,7 @@
 package controller;
 
 import model.Customer;
+import model.Employee;
 import service.Customer.CustomerService;
 import service.Customer.ICustomerService;
 
@@ -32,12 +33,23 @@ public class CustomerServlet extends HttpServlet {
             case "edit":
                 updateCustomer(request, response);
                 break;
-            case "delete":
-                deleteCustomer(request, response);
+            case "search":
+                searchCustomer(request, response);
                 break;
             default:
                 findAll(request, response);
                 break;
+        }
+    }
+
+    private void searchCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int customerId = Integer.parseInt(request.getParameter("customerId"));
+        try {
+            request.setAttribute("customer", customerService.findById(customerId));
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/view.jsp");
+            requestDispatcher.forward(request, response);
+        } catch (IOException | ServletException throwables) {
+            throwables.printStackTrace();
         }
     }
 
@@ -56,24 +68,37 @@ public class CustomerServlet extends HttpServlet {
         }
     }
 
-    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) {
-    }
 
-    private void updateCustomer(HttpServletRequest request, HttpServletResponse response) {
-    }
-
-    private void saveCustomer(HttpServletRequest request, HttpServletResponse response) {
-        int customerId= Integer.parseInt(request.getParameter("customerId"));
+    private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int customerId = Integer.parseInt(request.getParameter("customerId"));
         String customerName = request.getParameter("customerName");
         String customerBirthday = request.getParameter("customerBirthday");
-        int customerGender= Integer.parseInt(request.getParameter("customerGender"));
+        int customerGender = Integer.parseInt(request.getParameter("customerGender"));
         String customerIdCard = request.getParameter("customerIdCard");
         String customerPhone = request.getParameter("customerPhone");
         String customerMail = request.getParameter("customerMail");
         String customerAddress = request.getParameter("customerAddress");
-        int customerTypeId= Integer.parseInt(request.getParameter("customerTypeId"));
+        int customerTypeId = Integer.parseInt(request.getParameter("customerTypeId"));
 
-        Customer customer= new Customer(customerId,customerName,customerBirthday,customerGender,customerIdCard,customerPhone,customerMail,customerAddress,customerTypeId);
+        Customer customer = new Customer(customerId, customerName, customerBirthday, customerGender, customerIdCard, customerPhone,
+                customerMail, customerAddress, customerTypeId);
+        customerService.edit(customer);
+        response.sendRedirect("/customer");
+    }
+
+    private void saveCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int customerId = Integer.parseInt(request.getParameter("customerId"));
+        String customerName = request.getParameter("customerName");
+        String customerBirthday = request.getParameter("customerBirthday");
+        int customerGender = Integer.parseInt(request.getParameter("customerGender"));
+        String customerIdCard = request.getParameter("customerIdCard");
+        String customerPhone = request.getParameter("customerPhone");
+        String customerMail = request.getParameter("customerMail");
+        String customerAddress = request.getParameter("customerAddress");
+        int customerTypeId = Integer.parseInt(request.getParameter("customerTypeId"));
+
+        Customer customer = new Customer(customerId, customerName, customerBirthday, customerGender, customerIdCard, customerPhone,
+                customerMail, customerAddress, customerTypeId);
         customerService.create(customer);
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create.jsp");
         try {
@@ -95,9 +120,46 @@ public class CustomerServlet extends HttpServlet {
             case "create":
                 showCreateFrom(request, response);
                 break;
+            case "edit":
+                showEditForm(request, response);
+                break;
+            case "delete":
+                deleteCustomer(request, response);
+                break;
             default:
                 findAll(request, response);
                 break;
+        }
+    }
+
+    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int customerId = Integer.parseInt(request.getParameter("id"));
+        try {
+            customerService.delete(customerId);
+            request.setAttribute("customerList", customerService.findAll());
+            RequestDispatcher dispatcher = request.getRequestDispatcher("customer/listCustomer.jsp");
+            dispatcher.forward(request, response);
+        } catch (IOException | ServletException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
+        int customerId = Integer.parseInt(request.getParameter("id"));
+        Customer customer = customerService.findById(customerId);
+        RequestDispatcher dispatcher;
+        if (customer == null) {
+            dispatcher = request.getRequestDispatcher("error-404.jsp");
+        } else {
+            request.setAttribute("customer", customer);
+            dispatcher = request.getRequestDispatcher("customer/edit.jsp");
+        }
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

@@ -1,7 +1,6 @@
 package repository.Customer;
 
 import model.Customer;
-import model.Employee;
 import repository.BaseRepository;
 
 import java.sql.Connection;
@@ -19,7 +18,9 @@ public class CustomerRepository implements ICustomerRepository {
             "customer_id_card,customer_phone,customer_email,customer_address,customer_type_id) " +
             " values (?,?,?,?,?,?,?,?)";
     private static final String FIND_BY_ID = "select * from customer where customer_id = ?";
-
+    private static final String UPDATE = "update customer set customer_name =?,customer_birthday =?,customer_gender =?,customer_id_card =?," +
+            "customer_phone =?,customer_email =?,customer_address =?,customer_type_id =? where customer_id = ?";
+    private static final String DELETE = "delete from customer where customer_id =?";
 
     @Override
     public List<Customer> findAll() {
@@ -102,11 +103,41 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public void edit(Customer customer) {
+        customerList.clear();
 
+        try {
+            Connection connection = new BaseRepository().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE);
+            preparedStatement.setString(1, customer.getCustomerName());
+            preparedStatement.setString(2, customer.getCustomerBirthday());
+            preparedStatement.setInt(3, customer.getCustomerGender());
+            preparedStatement.setString(4, customer.getCustomerIdCard());
+            preparedStatement.setString(5, customer.getCustomerPhone());
+            preparedStatement.setString(6, customer.getCustomerMail());
+            preparedStatement.setString(7, customer.getCustomerAddress());
+            preparedStatement.setInt(8, customer.getCustomerTypeId());
+            preparedStatement.setInt(9, customer.getCustomerId());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override
     public void delete(int customerId) {
-
+        Connection connection = new BaseRepository().getConnection();
+        PreparedStatement statement = null;
+        if (connection != null) {
+            try {
+                statement = connection.prepareStatement(DELETE);
+                statement.setInt(1, customerId);
+                statement.executeUpdate();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
     }
 }
+

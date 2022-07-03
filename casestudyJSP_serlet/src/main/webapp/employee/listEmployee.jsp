@@ -64,12 +64,47 @@
                 </c:choose>
             </td>
             <td><a href="/employee?action=edit&id=${employee.getEmployeeId()}">edit</a></td>
-            <td><a href="/employee?action=delete&id=${employee.getEmployeeId()}">delete</a></td>
+            <td>
+                <button type="button" class="btn btn-primary"
+                        onclick="infoDelete('${employee.getEmployeeId()}','${employee.getEmployeeName()}')"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal"> Delete
+                </button>
+            </td>
         </tr>
     </c:forEach>
 </table>
-</body>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="/employee" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" hidden name="id" id="idDelete">
+                    <input type="text" hidden name="action" value="delete">
+                    <span>Bạn có muốn xóa employee : </span>
+                    <span id="nameDelete"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    function infoDelete(id, name) {
+        document.getElementById("idDelete").value = id;
+        document.getElementById("nameDelete").innerText = name;
+    }
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+</body>
 </html>

@@ -153,3 +153,25 @@ values
 (1,'Nguyễn Thị Hào','1970-11-07',0,'643431213','0945423362','thihao07@gmail.com','23 Nguyễn Hoàng, Đà Nẵng',5),
 (2,'Phạm Xuân Diệu','1992-08-08',1,'865342123','0954333333','xuandieu92@gmail.com','K77/22 Thái Phiên, Quảng Trị',3),
 (3,'Trương Đình Nghệ','1990-02-27',1,'488645199','0373213122','nghenhan2702@gmail.com','K323/12 Ông Ích Khiêm, Vinh',1);
+
+insert into rent_type(rent_type_id, rent_type_name)
+values
+(1,"Năm"),
+(2,"Tháng"),
+(3,"Ngày"),
+(4,"Giờ");
+
+insert into facility_type(facility_type_id,facility_type_name)
+values
+(1,"Villa"),
+(2,"House"),
+(3,"Room");
+
+insert into facility(facility_id,facility_name,area,cost,max_people,standard_room,description_other_convenience,pool_area,number_of_floors,facility_free,rent_type_id,facility_type_id)
+values
+(1,'Villa Beach Front','25','10000000',10,'vip','Có hồ bơi',500,4,3,1),
+ (2,'House Princess 01','14000','5000000',7,'vip','Có thêm bếp nướng',null,3,2,2,2),
+ (3,'Room Twin 01','5000','1000000',2,'vip','Có tivi',null,null,4,3,2);
+
+
+

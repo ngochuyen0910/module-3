@@ -45,7 +45,7 @@ public class EmployeeServlet extends HttpServlet {
         int employeeId = Integer.parseInt(request.getParameter("employeeId"));
         try {
             request.setAttribute("employee", employeeService.findById(employeeId));
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/employee/view.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("employee/view.jsp");
             requestDispatcher.forward(request, response);
         } catch (IOException | ServletException throwables) {
             throwables.printStackTrace();
@@ -97,7 +97,6 @@ public class EmployeeServlet extends HttpServlet {
         }
     }
 
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -120,7 +119,7 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) {
-        int employeeId = Integer.parseInt(request.getParameter("employeeId"));
+        int employeeId = Integer.parseInt(request.getParameter("id"));
         try {
             employeeService.delete(employeeId);
             request.setAttribute("employeeList", employeeService.findAll());
@@ -132,7 +131,7 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
-        int employeeId = Integer.parseInt(request.getParameter("employeeId"));
+        int employeeId = Integer.parseInt(request.getParameter("id"));
         Employee employee = employeeService.findById(employeeId);
         RequestDispatcher dispatcher;
         if (employee == null) {
@@ -175,5 +174,4 @@ public class EmployeeServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-
 }
