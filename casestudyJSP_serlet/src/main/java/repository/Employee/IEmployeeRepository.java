@@ -4,14 +4,14 @@ import model.Employee;
 
 import java.util.List;
 
-public interface EmployeeRepository {
+public interface IEmployeeRepository {
     List<Employee> findAll();
 
     void create(Employee employee);
 
-    Employee findById(int id);
+    Employee findById(int employeeId);
 
     void edit(Employee employee);
 
-    void delete(int id);
+    void delete(int employeeId);
 }

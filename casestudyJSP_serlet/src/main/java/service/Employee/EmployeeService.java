@@ -20,17 +20,17 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public Employee findById(int id) {
-        return null;
+    public Employee findById(int employeeId) {
+        return employeeRepository.findById(employeeId);
     }
 
     @Override
     public void edit(Employee employee) {
-
+        employeeRepository.edit(employee);
     }
 
     @Override
-    public void delete(int id) {
-
+    public void delete(int employeeId) {
+        employeeRepository.delete(employeeId);
     }
 }
