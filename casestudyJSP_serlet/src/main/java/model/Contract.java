@@ -5,6 +5,7 @@ public class Contract {
     private String contractStartDate;
     private String contractEndDate;
     private double deposit;
+    private double totalMoney;
     private int employeeId;
     private int customerId;
     private int facilityId;
@@ -12,11 +13,12 @@ public class Contract {
     public Contract() {
     }
 
-    public Contract(int contractId, String contractStartDate, String contractEndDate, double deposit, int employeeId, int customerId, int facilityId) {
+    public Contract(int contractId, String contractStartDate, String contractEndDate, double deposit, double totalMoney, int employeeId, int customerId, int facilityId) {
         this.contractId = contractId;
         this.contractStartDate = contractStartDate;
         this.contractEndDate = contractEndDate;
         this.deposit = deposit;
+        this.totalMoney = totalMoney;
         this.employeeId = employeeId;
         this.customerId = customerId;
         this.facilityId = facilityId;
@@ -52,6 +54,14 @@ public class Contract {
 
     public void setDeposit(double deposit) {
         this.deposit = deposit;
+    }
+
+    public double getTotalMoney() {
+        return totalMoney;
+    }
+
+    public void setTotalMoney(double totalMoney) {
+        this.totalMoney = totalMoney;
     }
 
     public int getEmployeeId() {

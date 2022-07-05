@@ -1,8 +1,14 @@
 package controller;
 
 import model.Facility;
-import service.Facility.FacilityService;
-import service.Facility.IFacilityService;
+import model.FacilityType;
+import model.RentType;
+import service.facility.FacilityService;
+import service.facility.IFacilityService;
+import service.facility_type.FacilityTypeService;
+import service.facility_type.IFacilityTypeService;
+import service.rent_type.IRentTypeService;
+import service.rent_type.RentTypeService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,15 +17,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "FacilityServlet", urlPatterns = "/facility")
 
 public class FacilityServlet extends HttpServlet {
 
-    static List<Facility> facilityList = new ArrayList<>();
     private IFacilityService facilityService = new FacilityService();
+    private IRentTypeService rentTypeService = new RentTypeService();
+    private IFacilityTypeService facilityTypeService= new FacilityTypeService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -40,11 +46,15 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void findAll(HttpServletRequest request, HttpServletResponse response) {
-        facilityList = facilityService.findAll();
+        List<Facility> facilityList = facilityService.findAll();
+        List<FacilityType> facilityTypeList = facilityTypeService.findAll();
+        List<RentType> rentTypeList = rentTypeService.findAll();
 
         request.setAttribute("facilityList", facilityList);
+        request.setAttribute("facilityTypeList", facilityTypeList);
+        request.setAttribute("rentTypeList", rentTypeList);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("facility/listFacility.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/facility/listFacility.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -94,7 +104,7 @@ public class FacilityServlet extends HttpServlet {
 
         facilityService.create(facility);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("facility/create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/facility/create.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -131,7 +141,7 @@ public class FacilityServlet extends HttpServlet {
         try {
             facilityService.delete(facilityId);
             request.setAttribute("facilityList", facilityService.findAll());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("facility/listFacility.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("view/facility/listFacility.jsp");
             dispatcher.forward(request, response);
         } catch (IOException | ServletException throwables) {
             throwables.printStackTrace();
@@ -147,7 +157,7 @@ public class FacilityServlet extends HttpServlet {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             request.setAttribute("facility", facility);
-            dispatcher = request.getRequestDispatcher("facility/edit.jsp");
+            dispatcher = request.getRequestDispatcher("view/facility/edit.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -159,7 +169,7 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void showCreateFrom(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("facility/create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/facility/create.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
