@@ -53,9 +53,10 @@ public class StudentServlet extends HttpServlet {
         }
         try {
             response.sendRedirect("/student");
-        } catch (IOException e) {
+        } catch ( IOException e) {
             e.printStackTrace();
         }
+
     }
 
     private void updateStudent(HttpServletRequest request, HttpServletResponse response) throws IOException {

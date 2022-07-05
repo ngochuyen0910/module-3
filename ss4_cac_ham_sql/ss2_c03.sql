@@ -120,7 +120,7 @@ select  c.* , count(id_class) as so_luong  from student s
 join class c on s.id_class = c.id
 group by id_class
 ;
-select s.*, c.name , ifnull(address*id_class,0) as DTB from student s
+select s.*, c.name , ifnull(address * id_class,0) as DTB from student s
 join class c on s.id_class = c.id 
 ;
 

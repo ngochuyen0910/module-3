@@ -13,7 +13,7 @@ public class StudentRepositoryImpl implements IStudentRepository {
     static List<Student> studentList = new ArrayList<>();
 
     private static final String FIND_ALL = "select * from student";
-    private static final String INSERT = "insert into student(name, class_name,gender,score) " +
+    private static final String INSERT = "insert into student(name, class_name, gender, score) " +
             " values (?,?,?,?)";
     private static final String FIND_BY_NAME = "select * from student where name like ?";
     private static final String FIND_BY_ID = "select * from student where id = ?";
@@ -35,6 +35,7 @@ public class StudentRepositoryImpl implements IStudentRepository {
                 String className = resultSet.getString("class_name");
                 int gender = resultSet.getInt("gender");
                 double score = resultSet.getDouble("score");
+
                 student = new Student(id, name, className, gender, score);
                 studentList.add(student);
             }
@@ -54,6 +55,7 @@ public class StudentRepositoryImpl implements IStudentRepository {
             preparedStatement.setString(2, student.getClassName());
             preparedStatement.setInt(3, student.getGender());
             preparedStatement.setDouble(4, student.getScore());
+
             preparedStatement.executeUpdate();
 
         } catch (SQLException throwables) {
@@ -97,6 +99,7 @@ public class StudentRepositoryImpl implements IStudentRepository {
             preparedStatement.setInt(3, studentS.getGender());
             preparedStatement.setDouble(4, studentS.getScore());
             preparedStatement.setInt(5, studentS.getId());
+
             preparedStatement.executeUpdate();
 
         } catch (SQLException throwables) {
@@ -109,10 +112,7 @@ public class StudentRepositoryImpl implements IStudentRepository {
         studentList.clear();
         try {
             Connection connection = new BaseRepository().getConnection();
-//          Tạo câu lệnh SQL
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_NAME);
-//          Dùng executeQuery/Update để thực thi.
-//          ResultSet : Nhận kết quả từ DB trả về để xử lý
             preparedStatement.setString(1, "%" + nameS + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             Student student = null;
@@ -133,17 +133,17 @@ public class StudentRepositoryImpl implements IStudentRepository {
 
     @Override
     public void delete(int ids) {
-        studentList.clear();
-        try {
-            Connection connection = new BaseRepository().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(DELETE);;
-            preparedStatement.setInt(1, ids.getId());
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        Connection connection = new BaseRepository().getConnection();
+        PreparedStatement statement = null;
+        if (connection != null) {
+            try {
+                statement = connection.prepareStatement(DELETE);
+                statement.setInt(1, ids);
+                statement.executeUpdate();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
     }
 }
-
 

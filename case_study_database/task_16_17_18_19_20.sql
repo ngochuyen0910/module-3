@@ -1,7 +1,6 @@
 use casestudy_database;
 
 -- 16.Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
-SET SQL_SAFE_UPDATES = 0;
 update nhan_vien set `status` = 1
 where nhan_vien.ma_nhan_vien in (
 select * from (
@@ -9,14 +8,13 @@ select nv.ma_nhan_vien from nhan_vien nv
 left join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien
 where nv.ma_nhan_vien not in (
 select nv.ma_nhan_vien from nhan_vien nv
-right join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien
+join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien
 group by ma_nhan_vien)
 ) temp);
 -- những Nhân viên đã được xoá
 select ma_nhan_vien, ho_ten from nhan_vien where `status` = 1;
 
 -- 18.Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
-SET SQL_SAFE_UPDATES = 0;
 update khach_hang set `status`= 1
 where khach_hang.ma_khach_hang in (
 select * from (
@@ -48,7 +46,7 @@ group by khach_hang.ma_khach_hang)
 
 -- 19.Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
 update dich_vu_di_kem 
-set gia = gia *2 where dich_vu_di_kem.ma_dich_vu_di_kem in(
+set gia = gia * 2 where dich_vu_di_kem.ma_dich_vu_di_kem in(
 select * from(
 select dich_vu_di_kem.ma_dich_vu_di_kem
 from dich_vu_di_kem

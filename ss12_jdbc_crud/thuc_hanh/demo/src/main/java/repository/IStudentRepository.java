@@ -13,7 +13,6 @@ public interface IStudentRepository {
 
     void edit(Student student);
 
-
     List<Student> findByName(String name);
 
     void delete(int id);
